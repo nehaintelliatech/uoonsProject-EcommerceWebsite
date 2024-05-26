@@ -1,0 +1,13 @@
+.containerSlide {
+    /* width: 650px; */
+    margin: auto;
+    padding: 0.5rem 0;
+  }
+  
+  .containerSlide img {
+    /* height: 500px; */
+    width: 100%;
+    border-radius: 16px;
+    
+  
+  }
