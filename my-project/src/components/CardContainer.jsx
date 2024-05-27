@@ -26,7 +26,14 @@ const CardContainer = (props) => {
   return (
     <div className='bg-white flex flex-col w-[78%] items-center shadow-xl rounded-[16px] relative p-3 my-3'>
       <div className='flex w-full justify-between items-center px-2'>
+        {props.heading == "Made in India"?
+        <div className='flex gap-2'>
+          <h1 className='text-[30px] font-bold bg-black rounded-[16px] px-3'><span className='text-orange-600'>Made</span ><span className='text-white'>In</span><span className='text-green-600'>India</span></h1>
+          <h1 className='text-[30px] font-bold'>Products</h1>
+        </div>
+        :
         <h1 className='text-[30px] font-bold'>{props.heading}</h1>
+        }
         <div>
           <button className='bg-orange-300 rounded-[16px] p-1 px-2 flex gap-1 items-center hover:brightness-95'>view all <FaArrowRight /></button>
         </div>

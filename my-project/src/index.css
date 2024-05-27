@@ -21,3 +21,8 @@
 ::-webkit-scrollbar {
     display: none;
 }
+.startupInd{
+    background: url("./assets/gggg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }

@@ -1,27 +1,23 @@
 import { useState } from 'react'
+import './App.css'
 import Header from './components/Header'
-import SlideShow from './components/SlideShow'
+import Slideshow from './components/Slideshow'
 import CardContainer from './components/CardContainer'
-import ad1 from './assets/ad1.jpg'
-import AdSection from './components/AdSection'
-import ProductAdContainer from './components/ProductAdContainer'
-import AdBanner from './components/AdBanner'
-import ShopByBrand from './components/ShopByBrand'
-
-import CategoriesContainer from './components/CategoriesContainer'
-import CardContainer2 from './components/CardContainer2'
-
+import ad1 from './assets/Special weekend.jpg'
+import ad3 from './assets/ad222.jpg'
 import ad4 from './assets/ad333.jpg'
+import ShopByBrand from './components/ShopByBrand'
+import AdsSection from './components/AdsSection'
 import NewFooter from './components/NewFooter'
-
-
+import CardContainer3 from './components/CardContainer3'
+import CategoriesContainer from './components/CategoriesContainer'
+import CardContainer4 from './components/CardContainer4'
+import CardContainer5 from './components/CardContainer5'
 
 function App() {
-  const [heading1, setheading1] = useState("Deal of The Day!")
-  const [heading2, setheading2] = useState("New Arrival")
-  const [heading3, setheading3] = useState("Made in India")
-  const [heading4, setheading4] = useState("Recently viewed!")
-
+    const [heading1, setheading1] = useState("Deal of The Day!")
+    const [heading2, setheading2] = useState("New Arrival")
+    const [heading3, setheading3] = useState("Made in India")
   const [productDataList, setProductDataList] = useState([
     {
         id: 1,
@@ -122,56 +118,57 @@ function App() {
     
    
 ])
+const [first, setfirst] = useState("Featured Products!")
+const [firsttt, setfirsttt] = useState("New Arrival")
 
   return (
     <>
-      <div className='w-[95%] flex flex-col items-center relative'>
-        <Header />
-        <SlideShow />
-        <div className=" flex w-full justify-between items-center">
-          <CardContainer productDataList={productDataList} heading={heading1}/>
-          <div className='rounded-[16px] overflow-hidden flex justify-center'><img className='w-[350px] h-[394px] object-cover' src={ad1} alt="" /></div>
-        </div>
-        <AdSection />
-
-        <ProductAdContainer />
-
-      <div className=" flex w-full justify-between items-center">
-        <CardContainer productDataList={productDataList} heading={heading2}/>
-        <AdBanner type={2}/>
+    <div className='flex flex-col w-full items-center'>
+      <Header />
+      {/* <Navbar /> */}
+      <Slideshow />
+      <div className=" flex w-[95%] justify-between items-center">
+        <CardContainer productDataList={productDataList} heading={heading1}/>
+        <div className='rounded-[16px] overflow-hidden flex items-center'><img className='w-[320px] object-cover' src={ad1} alt="" /></div>
       </div>
 
+      <AdsSection />
+
+      <div className=" flex w-[95%] justify-between items-center">
+        <CardContainer productDataList={productDataList} heading={heading2}/>
+        <div className='w-[320px] h-[420px] p-2 rounded-[16px] flex flex-col justify-between bg-[#f3f6ff]'>
+            <h2 className='text-2xl'>Shop activity trackers and smartwatches</h2>
+            <img className='w-[full] object-cover' src={ad3} alt="" />
+            <span className='text-blue-700 hover:underline cursor-pointer'>Shop Now!</span>
+        </div>
+      </div>
+      
         <ShopByBrand />
 
-      <div className=" flex w-full justify-between items-center">
-        <CardContainer productDataList={productDataList} heading={heading3}/>
-        <div className='rounded-[16px] overflow-hidden flex justify-center'><img className='w-[350px] h-[394px] object-cover' src={ad1} alt="" /></div>
-      </div>
+    <div className=" flex w-[95%] justify-between items-center">
+        <CardContainer3 productDataList={productDataList} heading={heading3}/>
+        <div className='rounded-[16px] flex items-center overflow-hidden cursor-pointer'><img className='w-[320px] object-cover' src={ad1} alt="" /></div>
+    </div>
 
-      <div className=' flex w-full justify-between items-center'>
+    <div className=' flex w-[95%] justify-between items-center my-4'>
         <CategoriesContainer />
-        <div className=''><img src={ad4} alt="" /></div>
-      </div>
+        <div className='w-[42%] rounded-[16px] flex items-center overflow-hidden'><img className='w-full h-[555px] object-cover' src={ad4} alt="" /></div>
+    </div>
 
-      <div className='w-full h-[570px] startupInd rounded-[16px] overflow-hidden flex justify-center relative my-3'>
+    <div className='w-[95%] h-[570px] startupInd rounded-[16px] overflow-hidden flex justify-center'>
 
-        <CardContainer2 productDataList={productDataList}/>
+        <CardContainer4 productDataList={productDataList} heading={heading2}/>
 
-      </div>
+    </div>
 
-      <div className=" flex w-full justify-between items-center">
-        <CardContainer productDataList={productDataList} heading={heading4}/>
-        <AdBanner type={2}/>
-      </div>
+    {/* 3 card */}
+    <div className=" flex w-[95%] justify-between items-center">
+        <CardContainer5 productDataList={productDataList} />
+    </div>
 
-      <ProductAdContainer />
-
-
-
-      </div>
-
-      <NewFooter />
-
+    </div>
+    {/* <Footer /> */}
+    <NewFooter />
     </>
   )
 }
