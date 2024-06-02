@@ -14,6 +14,8 @@ import CardContainer2 from './components/CardContainer2'
 import ad4 from './assets/ad333.jpg'
 import NewFooter from './components/NewFooter'
 
+import PopUP from './components/PopUP'
+
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
   const [heading2, setheading2] = useState("New Arrival")
   const [heading3, setheading3] = useState("Made in India")
   const [heading4, setheading4] = useState("Recently viewed!")
+  const [heading6, setheading6] = useState("Best Seller1")
+  const [heading7, setheading7] = useState("SmartPhones & Tablets")
 
   const [productDataList, setProductDataList] = useState([
     {
@@ -128,13 +132,13 @@ function App() {
       <div className='w-[95%] flex flex-col items-center relative'>
         <Header />
         <SlideShow />
-        <div className=" flex w-full justify-between items-center">
+        <div className=" flex w-full justify-between items-center dealOfTheDay">
           <CardContainer productDataList={productDataList} heading={heading1}/>
           <div className='rounded-[16px] overflow-hidden flex justify-center'><img className='w-[350px] h-[394px] object-cover' src={ad1} alt="" /></div>
         </div>
         <AdSection />
 
-        <ProductAdContainer />
+        <ProductAdContainer rr={1} />
 
       <div className=" flex w-full justify-between items-center">
         <CardContainer productDataList={productDataList} heading={heading2}/>
@@ -164,7 +168,20 @@ function App() {
         <AdBanner type={2}/>
       </div>
 
-      <ProductAdContainer />
+      <ProductAdContainer rr={1} />
+
+      <div className=" flex w-full justify-between items-center">
+        <CardContainer productDataList={productDataList} heading={heading6}/>
+        <AdBanner type={2}/>
+      </div>
+      <div className=" flex w-full justify-between items-center">
+        <CardContainer productDataList={productDataList} heading={heading7}/>
+        <AdBanner type={2}/>
+      </div>
+
+      <ProductAdContainer rr={2} />
+
+
 
 
 

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { FaHeart } from "react-icons/fa";
 import { GrCart } from "react-icons/gr";
 import './Card.css'
+import { Link, NavLink } from 'react-router-dom'
+
 
 
 
@@ -14,7 +16,7 @@ function Card({data}) {
   },)
   
   return (
-
+    <Link to="/ProductDescription">
     <div className='Card h-[300px] bg-white p-3 flex flex-col items-center justify-start border rounded-[16px] overflow-hidden hover:shadow-2xl relative'>
 
       <div className='mainCardContent flex flex-col h-[300px] justify-start items-center overflow-hidden'>
@@ -42,6 +44,7 @@ function Card({data}) {
       </div>
 
     </div>
+    </Link>
   )
 }
 
