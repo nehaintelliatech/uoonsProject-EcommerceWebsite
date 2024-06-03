@@ -16,7 +16,7 @@ function Card({data}) {
   },)
   
   return (
-    <Link to="/ProductDescription">
+    <Link to="/ProductDescription2">
     <div className='Card h-[300px] bg-white p-3 flex flex-col items-center justify-start border rounded-[16px] overflow-hidden hover:shadow-2xl relative'>
 
       <div className='mainCardContent flex flex-col h-[300px] justify-start items-center overflow-hidden'>
