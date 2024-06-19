@@ -15,6 +15,10 @@ import Checkout from './pages/Checkout.jsx';
 import Checkout1 from './pages/Checkout1.jsx';
 import CategoriesPage from './pages/CategoriesPage.jsx';
 import ProductList from './pages/ProductList.jsx';
+import Timeline from './pages/Timeline.jsx';
+import TermsAndConditions from './pages/TermsAndConditions.jsx';
+import SimpleMap from './pages/SimpleMap.jsx';
+import ContactUs from './pages/ContactUs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +60,22 @@ const router = createBrowserRouter([
   {
     path: "/ProductList",
     element: <><ProductList /></>,
+  },
+  {
+    path: "/AboutUs",
+    element: <><Timeline /></>,
+  },
+  {
+    path: "/TermsAndConditions",
+    element: <><TermsAndConditions /></>,
+  },
+  {
+    path: "/Map",
+    element: <><SimpleMap /></>,
+  },
+  {
+    path: "/ContactUs",
+    element: <><ContactUs /></>,
   },
 ]);
 
