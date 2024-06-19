@@ -29,7 +29,7 @@ function Header() {
 
             {/* searchBox */}
             <div className='flex items-center rounded-[16px] overflow-hidden hover:border-orange-600 duration-500 hover:shadow-2xl border px-2'>
-                <button className='flex items-center p-2 cursor-pointer hover:text-orange-600 duration-500 font-semibold outline-0'>
+                <button className='flex items-center p-2 hover:text-orange-600 duration-500 font-semibold outline-0'>
                     Shop by Categories <RiArrowDropDownLine className='text-3xl self-end'/>
                 </button>
                 <input type="text" placeholder='Search your favorite products and brands' className='p-2 outline-0 w-[700px]' />
@@ -37,7 +37,6 @@ function Header() {
             </div>
 
             {/* essentialLinks */}
-
             <div className="flex gap-8 items-center">
                 
                 {/* Deliver to button */}
@@ -53,10 +52,10 @@ function Header() {
                 {/* loginButton */}
                 <div className="relative">
                     <button onClick={toggleDropdown} className="hover:text-orange-600 duration-500 outline-0">
-                        <div className='flex items-center gap-2 p-2 text-lg outline-0'><FaRegUser /> Log-In/Sign-Up</div>
+                        <div className='flex items-center gap-2 p-2 text-lg'><FaRegUser /> Log-In/Sign-Up</div>
                     </button>
                     {dropdownOpen && (
-                        <div className="absolute right-0 bg-white p-2 z-30 text-center rounded-[16px] hover:shadow-2xl border">
+                        <div className="absolute right-0 bg-white p-2 z-30 text-center rounded-[16px] hover:shadow-2xl border w-[200px]">
                             <a href="#"><FaRegUser /> My Profile</a>
                             <a href="#"><LuShoppingBag /> My Orders</a>
                             <a href="#"><TbTruckDelivery /> Track Order</a>

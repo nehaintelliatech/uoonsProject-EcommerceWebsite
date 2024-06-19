@@ -6,6 +6,8 @@ import { FaShoppingCart, FaCreditCard, FaShippingFast } from 'react-icons/fa';
 import { BiSolidOffer } from 'react-icons/bi';
 import EMI from '../assets/credit.png'; // Ensure you have the EMI image in the correct path
 import AdBanner from '../components/AdBanner';
+import './ProductDescription.css'
+import RatingsReviews from '../components/RatingsReview';
 
 const product = {
   brand: "MSI",
@@ -25,11 +27,46 @@ const product = {
   ],
   description: "MSI GF63 Thin is a lightweight and powerful gaming laptop with Intel Core i5-12450H, 16GB DDR4 memory, and NVIDIA GeForce GTX 1650 Max-Q graphics.",
   specifications: {
-    Processor: "Intel Core i5-12450H",
-    RAM: "16GB DDR4",
-    Storage: "512GB NVMe SSD",
-    Graphics: "NVIDIA GeForce GTX 1650 Max-Q",
-    Display: "15.6 inch Full HD"
+    "Sales Package": "Laptop, Power Adaptor, User Guide, Warranty Documents",
+    "Model Number": "GF63 Thin 11UCX-1496IN",
+    PartNumber: "9S7-16R612-1496",
+    Series: "GF63",
+    Color: "Black",
+    Type: "Gaming Laptop",
+    SuitableFor: "Gaming",
+    PowerSupply: "120W AC Adapter",
+    BatteryCell: "3 Cell",
+    MSOfficeProvided: "No",
+    ProcessorBrand: "Intel",
+    ProcessorName: "Core i5",
+    ProcessorGeneration: "11th Gen",
+    SSD: "Yes",
+    SSDCapacity: "512 GB",
+    RAM: "16 GB",
+    RAMType: "DDR4",
+    ClockSpeed: "2.6 GHz with Turbo Boost Upto 4.4 GHz",
+    Cache: "12 MB",
+    GraphicProcessor: "NVIDIA GeForce RTX 2050",
+    NumberOfCores: "4",
+    OSArchitecture: "64 bit",
+    OperatingSystem: "Windows 11 Home",
+    SystemArchitecture: "64 bit",
+    MicIn: "Yes",
+    RJ45: "Yes",
+    USBPort: "1 x Type-C USB 3.2 Gen 1, 3 x Type-A USB 3.2 Gen 1",
+    HDMIPort: "1 x HDMI (4k @ 30Hz)",
+    MultiCardSlot: "No",
+    Touchscreen: "No",
+    ScreenSize: "15.6 inch",
+    ScreenResolution: "1920 x 1080 Pixel",
+    ScreenType: "Full HD LED Backlit IPS Display (144Hz Refresh Rate)",
+    Speakers: "Built-in Dual Speakers",
+    InternalMic: "Built-in Microphone",
+    SoundProperties: "Nahimic 3",
+    WirelessLAN: "Intel Wi-Fi 6 AX201 (2x2)",
+    Bluetooth: "v5.2",
+    Dimensions: "359 x 254 x 21.7 mm",
+    Weight: "1.86 kg",
   },
   highlights: [
     "Lightweight and portable design",
@@ -47,7 +84,24 @@ const product = {
   shippingInfo: {
     shipsFrom: "Uoons",
     soldBy: "GADGETRON"
-  }
+  },
+  frequentlyBoughtTogether: [
+    {
+      name: "Gaming Mouse",
+      image: "https://m.media-amazon.com/images/I/81P0JGKaq1L._SX679_.jpg",
+      price: 1000
+    },
+    {
+      name: "Gaming Headset",
+      image: "https://m.media-amazon.com/images/I/71m4UVcW90L._SX679_.jpg",
+      price: 1500
+    },
+    {
+      name: "Laptop Cooling Pad",
+      image: "https://m.media-amazon.com/images/I/71kc8sgAwIL._SX679_.jpg",
+      price: 800
+    }
+  ]
 };
 
 const ProductDescription2 = () => {
@@ -55,6 +109,12 @@ const ProductDescription2 = () => {
   const [zoomStyle, setZoomStyle] = useState({ display: 'none' });
   const [zoomBackgroundPosition, setZoomBackgroundPosition] = useState('0% 0%');
   const [quantity, setQuantity] = useState(0);
+  const [selectedSize, setSelectedSize] = useState('8GB RAM');
+  const [selectedStyle, setSelectedStyle] = useState('Intel Core i5-11260H');
+  const [coupon, setCoupon] = useState('');
+  const [appliedCoupon, setAppliedCoupon] = useState(null);
+  const [showAllSpecs, setShowAllSpecs] = useState(false);
+
   const imgRef = useRef();
   const zoomRef = useRef();
 
@@ -71,7 +131,6 @@ const ProductDescription2 = () => {
       backgroundImage: `url(${selectedImage})`,
       backgroundSize: `${width * 2}px ${height * 2}px`,
       backgroundPosition: zoomBackgroundPosition,
-      
     });
   };
 
@@ -87,13 +146,17 @@ const ProductDescription2 = () => {
     setQuantity(prev => (prev > 0 ? prev - 1 : prev));
   };
 
-  return (
-    <div className='flex flex-col w-full items-center bg-blue-100'>
-      <Header />
+  const handleApplyCoupon = () => {
+    setAppliedCoupon(coupon);
+    setCoupon('');
+  };
 
+  return (
+    <div className='flex flex-col w-full items-center bg-blue-100 relative'>
+      <Header />
       <div className='bg-white flex w-[95%] items-start rounded-[16px] p-3 my-8 shadow-lg relative'>
         {/* Section 1: Product Image and Image Catalogue */}
-        <div className='flex flex-col items-center  border border-gray-300 rounded-md p-2 w-1/2 sticky top-3'>
+        <div className='flex flex-col items-center border border-gray-300 rounded-md p-2 w-1/2 sticky top-[120px]'>
           {/* Main Product Image */}
           <div 
             className='relative w-[550px] h-[550px] overflow-hidden border border-gray-200 rounded-md'
@@ -137,110 +200,182 @@ const ProductDescription2 = () => {
             <h2 className='font-bold text-2xl'>{product.name}</h2>
 
             <div className='flex items-center gap-1 justify-start mt-2'>
-              <div className='flex text-xl gap-1'>
+              <span className='flex'>
                 {[...Array(5)].map((_, index) => (
-                  index < product.rating ? <MdOutlineStarPurple500 key={index} /> : <MdOutlineStarBorderPurple500 key={index} />
+                  index < Math.floor(product.rating) ? 
+                    <MdOutlineStarPurple500 key={index} className='text-yellow-500 text-xl' /> : 
+                    <MdOutlineStarBorderPurple500 key={index} className='text-yellow-500 text-xl' />
                 ))}
+              </span>
+              <span>({product.reviews} Reviews)</span>
+            </div>
+
+            <hr className='my-4'/>
+
+            <div className='flex items-center'>
+              <h2 className='text-3xl font-bold text-green-700'>₹{product.price}</h2>
+              <span className='text-gray-500 text-sm ml-4'><del>₹{product.originalPrice}</del></span>
+              <span className='text-green-700 text-sm ml-4'>{product.discount}% off</span>
+            </div>
+            <p className='text-gray-500 text-sm mt-1'>inclusive of all taxes</p>
+            <img src={EMI} className="w-24 mt-2" alt="EMI options" />
+            <p className='text-blue-600 text-sm'>EMI starts at {product.emi}</p>
+
+            <hr className='my-4'/>
+
+            <p>{product.description}</p>
+            <ul className='list-disc list-inside'>
+              {product.highlights.map((highlight, index) => (
+                <li key={index} className='text-gray-700'>{highlight}</li>
+              ))}
+            </ul>
+
+            <div className='my-4'>
+              <h2 className='font-bold text-lg'>Size: </h2>
+              <select 
+                value={selectedSize} 
+                onChange={(e) => setSelectedSize(e.target.value)} 
+                className='border border-gray-300 rounded-md p-1'
+              >
+                <option value='8GB RAM'>8GB RAM</option>
+                <option value='16GB RAM'>16GB RAM</option>
+              </select>
+            </div>
+
+            <div className='my-4'>
+              <h2 className='font-bold text-lg'>Style: </h2>
+              <select 
+                value={selectedStyle} 
+                onChange={(e) => setSelectedStyle(e.target.value)} 
+                className='border border-gray-300 rounded-md p-1'
+              >
+                <option value='Intel Core i5-11260H'>Intel Core i5-11260H</option>
+                <option value='Intel Core i7-11370H'>Intel Core i7-11370H</option>
+              </select>
+            </div>
+
+            <div className='my-4'>
+              <h2 className='font-bold text-lg'>Quantity: </h2>
+              <div className='flex items-center gap-2'>
+                <button 
+                  onClick={decrementQuantity}
+                  className='border border-gray-300 rounded-md px-2'
+                >-</button>
+                <span>{quantity}</span>
+                <button 
+                  onClick={incrementQuantity}
+                  className='border border-gray-300 rounded-md px-2'
+                >+</button>
               </div>
-              <p className='text-xl'>({product.rating.toFixed(1)})</p>
-              <p className='text-blue-700 text-lg ml-2'>{product.reviews} reviews</p>
             </div>
 
-            <div className='flex gap-4 mt-2'>
-              <span className='flex items-center text-sm'><TbTruckDelivery className='mr-1' /> Free Shipping</span>
-              <span className='flex items-center text-sm'><TbTruckReturn className='mr-1' /> Free 30-day returns</span>
+            <div className='flex items-center gap-2 mt-4'>
+              <button className='bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-md flex items-center gap-2'>
+                <FaShoppingCart /> Add to Cart
+              </button>
+              <button className='bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-md flex items-center gap-2'>
+                <FaShippingFast /> Buy Now
+              </button>
             </div>
 
-            <div className='border-t pt-4 mt-4'>
-              <p className='text-2xl flex gap-1 items-end'>₹{product.price.toLocaleString()}<span className='line-through text-lg text-gray-500'>₹{product.originalPrice.toLocaleString()}</span></p>
-              <p className='text-green-600 text-2xl'>{product.discount}% OFF</p>
-              <p>Inclusive of all taxes</p>
-              <div className='flex items-center'>
-                <img src={EMI} alt="EMI" className='w-[1.3rem] object-contain'/>
-                <p className='text-sm ml-2'><span className='font-bold'>EMI</span> Available from {product.emi}</p>
+            <div className='mt-4'>
+              <h2 className='font-bold text-lg'>Shipping & Returns</h2>
+              <div className='flex items-center gap-2'>
+                <TbTruckDelivery className='text-2xl'/>
+                <p>Free delivery by <span className='font-bold'>Tomorrow</span></p>
+              </div>
+              <div className='flex items-center gap-2 mt-2'>
+                <TbTruckReturn className='text-2xl'/>
+                <p>Easy 30-day returns</p>
               </div>
             </div>
 
             <div className='mt-4'>
-              <p className='text-lg font-semibold'>Availability: <span className='text-green-600'>In Stock</span></p>
-              <p className='text-sm text-gray-600'>Delivering to Indore 452001 - <a href="#" className='text-blue-600 underline'>Update location</a></p>
-              <div className='flex items-center mt-2'>
-                <p className='text-sm'>Set Quantity:</p>
-                <button 
-                  className='ml-2 px-2 py-1 bg-gray-200 text-gray-700 rounded' 
-                  onClick={decrementQuantity}
-                >-</button>
-                <span className='mx-2'>{quantity}</span>
-                <button 
-                  className='px-2 py-1 bg-gray-200 text-gray-700 rounded' 
-                  onClick={incrementQuantity}
-                >+</button>
+              <h2 className='font-bold text-lg'>Sold by</h2>
+              <div className='flex items-center gap-2'>
+                <MdOutlineStore className='text-2xl'/>
+                <p>{product.shippingInfo.shipsFrom}</p>
               </div>
-              <p className='text-sm text-red-600 mt-1'>Only 8 Left in stock</p>
+              <div className='flex items-center gap-2 mt-2'>
+                <MdOutlineStore className='text-2xl'/>
+                <p>{product.shippingInfo.soldBy}</p>
+              </div>
             </div>
 
-            <div className='mt-4 flex gap-4'>
-              <button className='flex items-center px-4 py-2 bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-md shadow-md'>
-                <FaShoppingCart className='mr-2' /> Add to Cart
-              </button>
-              <button className='flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-md shadow-md'>
-                <FaCreditCard className='mr-2' /> Buy Now
-              </button>
+            <div className='mt-4'>
+              <h2 className='font-bold text-lg'>Apply Coupon</h2>
+              <div className='flex items-center gap-2'>
+                <input 
+                  type='text' 
+                  value={coupon}
+                  onChange={(e) => setCoupon(e.target.value)}
+                  placeholder='Enter coupon code'
+                  className='border border-gray-300 rounded-md p-2 w-full'
+                />
+                <button 
+                  onClick={handleApplyCoupon}
+                  className='bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md'
+                >Apply</button>
+              </div>
+              {appliedCoupon && <p className='text-green-600 mt-2'>Coupon "{appliedCoupon}" applied!</p>}
             </div>
 
-            <div className='border-t pt-4 mt-4'>
-              <h2 className='flex items-center text-xl gap-1'><BiSolidOffer className='text-orange-600 text-2xl'/>OFFERS(12)</h2>
-              <ul>
-                <li className='flex items-center gap-1 mb-2'><MdOutlineLocalOffer className='text-green-600 text-xl'/>Flat INR 250 Instant Discount on OneCard Credit Card Non-EMI Txn. Minimum purchase value ₹7,500</li>
-                <li className='flex items-center gap-1 mb-2'><MdOutlineLocalOffer className='text-green-600 text-xl'/>10% Instant Discount up to INR 1500 on HSBC Credit Card Non EMI Trnxs. Minimum purchase value ₹15,000</li>
-                <li className='flex items-center gap-1 mb-2'><MdOutlineLocalOffer className='text-green-600 text-xl'/>Flat INR 2750 Instant Discount on OneCard Credit Card EMI Txn. Minimum purchase value ₹1,00,000</li>
-                <li className='flex items-center gap-1 mb-2'><MdOutlineLocalOffer className='text-green-600 text-xl'/> Get GST invoice and save up to 28% on business purchases.</li>
+            <hr className='my-4'/>
+
+            <div className='mt-4'>
+              <h2 className='font-bold text-lg'>Specifications</h2>
+              <ul className='list-disc list-inside'>
+                {Object.keys(product.specifications).slice(0, showAllSpecs ? undefined : 5).map((key, index) => (
+                  <li key={index} className='text-gray-700'>
+                    <span className='font-bold'>{key}: </span>{product.specifications[key]}
+                  </li>
+                ))}
               </ul>
-              <button className='bg-green-600 hover:brightness-110 rounded-[16px] text-white px-4 py-2 hover:shadow-2xl'>See all!</button>
+              <button 
+                onClick={() => setShowAllSpecs(!showAllSpecs)}
+                className='text-blue-600 mt-2'
+              >
+                {showAllSpecs ? 'Show Less' : 'Show More'}
+              </button>
             </div>
-
-            <p className='my-4'>{product.description}</p>
-
-            <h3 className='text-xl font-semibold mb-2'>Specifications:</h3>
-            <ul className='mb-4'>
-              {Object.entries(product.specifications).map(([key, value], index) => (
-                <li key={index} className='mb-1'><strong>{key}:</strong> {value}</li>
-              ))}
-            </ul>
-
-            <h3 className='text-xl font-semibold mb-2'>Highlights:</h3>
-            <ul className='list-disc pl-5'>
-              {product.highlights.map((highlight, index) => (
-                <li key={index} className='mb-1'>{highlight}</li>
-              ))}
-            </ul>
           </div>
 
-          <div className='bg-gray-600 h-[600px] w-full'></div>
-        </div>
+          <hr className='my-4'/>
 
-        {/* Section 3: Salient Features */}
-        <div className='flex-grow mx-4 sticky top-10'>
-          <div className='p-4 border border-gray-300 rounded-md'>
-            <h3 className='text-xl font-semibold mb-2'>Salient Features:</h3>
-            <ul className='list-disc pl-5'>
+          {/* Salient Features */}
+          <div className='mt-4'>
+            <h2 className='font-bold text-lg'>Salient Features</h2>
+            <ul className='list-disc list-inside'>
               {product.salientFeatures.map((feature, index) => (
-                <li key={index} className='mb-1'>{feature}</li>
+                <li key={index} className='text-gray-700'>{feature}</li>
               ))}
             </ul>
           </div>
+        </div>
+      </div>
 
-          {/* Shipping and Selling Info */}
-          <div className='p-4 border border-gray-300 rounded-md mt-4'>
-            <h3 className='text-xl font-semibold mb-2'>Shipping & Selling Info:</h3>
-            <ul className='list-disc pl-5'>
-              <li className='flex items-center gap-2 mb-1'><FaShippingFast className='text-blue-600 text-xl' /> Ships from: {product.shippingInfo.shipsFrom}</li>
-              <li className='flex items-center gap-2'><MdOutlineStore className='text-blue-600 text-xl' /> Sold by: {product.shippingInfo.soldBy}</li>
-            </ul>
-          </div>
-          <div className='mt-5'>
-          <AdBanner type={2} setType={"300px"}/>
-          </div>
+      <AdBanner />
+
+      <RatingsReviews />
+
+      {/* Frequently Bought Together Section */}
+      <div className='bg-white flex w-[95%] items-start rounded-[16px] p-3 my-8 shadow-lg relative'>
+        <h2 className='font-bold text-lg'>Frequently Bought Together</h2>
+        <div className='flex justify-between mt-4'>
+          {product.frequentlyBoughtTogether.map((item, index) => (
+            <div key={index} className='flex flex-col items-center p-4 border border-gray-300 rounded-md'>
+              <img 
+                src={item.image} 
+                alt={item.name}
+                className='w-24 h-24 object-cover'
+              />
+              <h3 className='font-bold mt-2'>{item.name}</h3>
+              <p className='text-green-700 font-bold'>₹{item.price}</p>
+              <button className='bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-md mt-2 flex items-center gap-2'>
+                <FaShoppingCart /> Add to Cart
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>

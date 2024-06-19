@@ -32,7 +32,7 @@ const AdBanner = (props) => {
             <p className='cursor-pointer mt-2 text-blue-600'>Shop the latest in gaming</p>
         </div>
         :
-        <div className='flex flex-col items-start border rounded-[16px] p-3 hover:shadow-2xl bg-white' style={{width: `${props.width}`}}>
+        <div className='flex flex-col items-start border-gray-300 rounded-[16px] p-3 hover:shadow-2xl bg-white' style={{width: `${props.setType}`}}>
             <h3 className='py-1 pb-2 text-2xl'>Shop activity trackers and smartwatches</h3>
             <div className='flex flex-col items-center'>
                 <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_SmartWatch_1X._SY304_CB639922137_.jpg" alt="" />

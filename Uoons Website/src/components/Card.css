@@ -1,0 +1,14 @@
+.Card:hover .Like-button{
+  top: 11px;
+}
+
+.Card:hover .buy-now{
+  bottom: 7px;
+}
+/* .Card:hover .mainCardContent{
+  height: 250px;
+} */
+.Card:hover .shrinkIt{
+  height: 20px;
+
+}

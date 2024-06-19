@@ -1,0 +1,76 @@
+.ratings-reviews-section {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .ratings-reviews-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .overall-rating {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .rating-value {
+    font-size: 36px;
+    font-weight: bold;
+    color: #FFD700; /* Gold color for the rating value */
+  }
+  
+  .rating-count {
+    font-size: 16px;
+    color: #888;
+  }
+  
+  .stars {
+    display: flex;
+  }
+  
+  .filled-star, .half-star {
+    color: #FFD700;
+    font-size: 20px;
+  }
+  
+  .review-summary {
+    margin: 20px 0;
+  }
+  
+  .review-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .review-item .review-count {
+    font-weight: bold;
+  }
+  
+  .review-item .review-text {
+    color: #888;
+  }
+  
+  .customer-reviews .customer-review {
+    margin-bottom: 20px;
+  }
+  
+  .customer-review .customer-name {
+    font-weight: bold;
+  }
+  
+  .customer-review .review-date {
+    font-size: 14px;
+    color: #888;
+    margin-left: 10px;
+  }
+  
+  .customer-review .stars {
+    margin: 5px 0;
+  }
+  
+  .customer-review .review-text {
+    font-size: 16px;
+  }
+  

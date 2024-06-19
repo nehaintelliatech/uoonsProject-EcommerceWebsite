@@ -8,6 +8,13 @@ import App from './App.jsx'
 import './index.css'
 import ProductDescription from './pages/ProductDescription.jsx';
 import ProductDescription2 from './pages/ProductDescription2.jsx';
+import AddToCart from './pages/AddToCart.jsx';
+import AddToCart1 from './pages/AddToCart1.jsx';
+import WishList from './pages/WishList.jsx';
+import Checkout from './pages/Checkout.jsx';
+import Checkout1 from './pages/Checkout1.jsx';
+import CategoriesPage from './pages/CategoriesPage.jsx';
+import ProductList from './pages/ProductList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +28,34 @@ const router = createBrowserRouter([
   {
     path: "/ProductDescription2",
     element: <><ProductDescription2 /></>,
+  },
+  {
+    path: "/AddToCart",
+    element: <><AddToCart /></>,
+  },
+  {
+    path: "/AddToCart1",
+    element: <><AddToCart1 /></>,
+  },
+  {
+    path: "/WishList",
+    element: <><WishList /></>,
+  },
+  {
+    path: "/Checkout",
+    element: <><Checkout /></>,
+  },
+  {
+    path: "/Checkout1",
+    element: <><Checkout1 /></>,
+  },
+  {
+    path: "/CategoriesPage",
+    element: <><CategoriesPage /></>,
+  },
+  {
+    path: "/ProductList",
+    element: <><ProductList /></>,
   },
 ]);
 

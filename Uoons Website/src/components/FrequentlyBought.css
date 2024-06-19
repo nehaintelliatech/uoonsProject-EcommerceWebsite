@@ -1,0 +1,39 @@
+.fbt-container {
+  border: 1px solid #ddd;
+}
+
+.fbt-items {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 16px;
+}
+
+.fbt-item {
+  width: 150px;
+}
+
+.fbt-total {
+  padding-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .fbt-items {
+    flex-direction: column;
+  }
+
+  .fbt-item {
+    margin-bottom: 16px;
+  }
+
+  .fbt-total {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fbt-total span {
+    margin-bottom: 8px;
+  }
+
+  .fbt-total button {
+    margin-left: 0;
+  }
+}
