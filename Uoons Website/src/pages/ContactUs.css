@@ -117,6 +117,7 @@ textarea {
 }
 
 .info-icon {
+    margin: 0 auto;
   font-size: 2em;
   color: orangered;
   margin-bottom: 10px;

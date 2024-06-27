@@ -19,6 +19,7 @@ import Timeline from './pages/Timeline.jsx';
 import TermsAndConditions from './pages/TermsAndConditions.jsx';
 import SimpleMap from './pages/SimpleMap.jsx';
 import ContactUs from './pages/ContactUs.jsx';
+import Faq from './pages/Faq.jsx';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
   {
     path: "/ContactUs",
     element: <><ContactUs /></>,
+  },
+  {
+    path: "/Faq",
+    element: <><Faq /></>,
   },
 ]);
 

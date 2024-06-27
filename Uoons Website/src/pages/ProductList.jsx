@@ -3,6 +3,7 @@ import FilterSection from './FilterSection';
 import Card2 from '../components/Card2';
 import Header from '../components/Header';
 import { FaList, FaTh } from 'react-icons/fa';
+import NewFooter from '../components/NewFooter';
 
 const ProductList = () => {
   const product = {
@@ -103,13 +104,14 @@ const ProductList = () => {
             </select>
           </div>
           <div className='flex flex-wrap justify-evenly w-full gap-y-4'>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, ].map((item) => {
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ].map((item) => {
               return <Card2 key={item} product={product} />
             })}
           </div>
         </div>
         </div>
       </div>
+      <NewFooter />
     </>
   );
 }

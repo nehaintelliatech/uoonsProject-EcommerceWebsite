@@ -4,12 +4,21 @@ import './ContactUs.css';
 import Header from '../components/Header';
 import NewFooter from '../components/NewFooter';
 
+const mapContainerStyle = {
+  height: '400px',
+  width: '100%'
+};
+
+const center = {
+  lat: 22.7196,
+  lng: 75.8577
+};
 
 const ContactUs = () => {
   return (
   <>
     <Header />
-    <div className="contact-container w-full bg-blue-100">
+    <div className="contact-container bg-blue-100">
       <div className="contact-content">
         <div className="contact-details">
           <div className="info-box">

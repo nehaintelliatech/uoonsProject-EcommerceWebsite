@@ -2,10 +2,12 @@ import React from 'react';
 import { FaApple, FaGooglePlay, FaWhatsapp, FaInstagram, FaTwitter, FaYoutube, FaLinkedin, FaBlogger, FaInstagramSquare, FaRegCopyright } from 'react-icons/fa';
 import { FiTruck, FiPhone, FiMessageCircle, FiGift } from 'react-icons/fi';
 import Logo from '../assets/Logo/uoonsLogo_Full.png'
+// import Footerboxes from '../components/Footerboxes'
 
 const NewFooter = () => {
   return (
     <div className="w-full bg-white border p-8 flex flex-col items-center">
+      {/* <Footerboxes /> */}
       
       <div className="flex flex-wrap justify-around w-full mt-8 text-center text-sm">
         <div className="flex flex-col items-center mb-4">
