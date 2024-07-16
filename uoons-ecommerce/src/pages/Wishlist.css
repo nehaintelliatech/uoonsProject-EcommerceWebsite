@@ -1,0 +1,124 @@
+/* Wishlist.css */
+.wishlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .wishlist-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0.5rem;
+  }
+  
+  .wishlist-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    object-fit: contain;
+  }
+  
+  .wishlist-details {
+    margin-top: 1rem;
+    flex-grow: 1;
+  }
+  
+  .wishlist-details h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .wishlist-details p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+  
+  .wishlist-details .salient-features {
+    font-size: 0.875rem;
+    color: #4b5563;
+    list-style-type: disc;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .wishlist-details .price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1f2937;
+  }
+  
+  .wishlist-details .original-price {
+    font-size: 0.875rem;
+    text-decoration: line-through;
+    color: #6b7280;
+    margin-left: 0.5rem;
+  }
+  
+  .wishlist-details .discount {
+    font-size: 0.875rem;
+    color: #16a34a;
+    margin-left: 0.5rem;
+  }
+  
+  .wishlist-details .remove-button {
+    color: #ef4444;
+    transition: color 0.2s;
+  }
+  
+  .wishlist-details .remove-button:hover {
+    color: #dc2626;
+  }
+  
+  @media (orientation: portrait) {
+    .wishlist-container {
+      flex-direction: column;
+    }
+  
+    .wishlist-item {
+      flex-direction: column;
+      min-height: 300px; /* Adjust as needed */
+    }
+  
+    .wishlist-image {
+      margin-bottom: 1rem;
+    }
+  
+    .wishlist-details {
+      width: 100%;
+    }
+  }
+  
+  @media (orientation: landscape) {
+    .wishlist-container {
+      flex-direction: row;
+    }
+  
+    .wishlist-item {
+      flex-direction: row;
+      max-width: 600px;
+      height: auto; /* Allow height to adjust based on content */
+      min-height: 200px; /* Set a minimum height to ensure consistency */
+    }
+  
+    .wishlist-image {
+      width: 40%;
+      height: auto; /* Allow height to adjust based on content */
+      margin-right: 1rem;
+      object-fit: contain; /* Ensure the entire image is visible without cropping */
+    }
+  
+    .wishlist-details {
+      width: 60%;
+      margin-left: 1rem;
+    }
+  }
+  

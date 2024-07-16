@@ -11,6 +11,8 @@ import Home from './pages/Home.jsx';
 import Faq from './pages/Faq.jsx';
 import Timeline from './pages/Timeline.jsx';
 import TermsAndConditions from './pages/TermsAndConditions.jsx';
+import ContactUs from './pages/ContactUs.jsx';
+import WishList from './pages/WishList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,15 @@ const router = createBrowserRouter([
     path: "/T&c",
     element: <TermsAndConditions />,
   },
+  {
+    path: "/ContactUs",
+    element: <ContactUs />,
+  },
+  {
+    path: "/Wishlist",
+    element: <WishList />,
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

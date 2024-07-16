@@ -19,3 +19,9 @@ http://localhost:5173/home
 to see the Faq page route to:
 http://localhost:5173/faq
 
+to see the Contactus page route to:
+http://localhost:5173/ContactUs
+
+to see the Wishlist page route to:
+http://localhost:5173/Wishlist
+
