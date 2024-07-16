@@ -13,6 +13,7 @@ import Timeline from './pages/Timeline.jsx';
 import TermsAndConditions from './pages/TermsAndConditions.jsx';
 import ContactUs from './pages/ContactUs.jsx';
 import WishList from './pages/WishList.jsx';
+import Homepage3 from './pages/Homepage3.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/Wishlist",
     element: <WishList />,
+  },
+  {
+    path: "/uoonsAds",
+    element: <Homepage3 />,
   },
 
 ]);

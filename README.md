@@ -16,6 +16,9 @@ http://localhost:5173/auth
 to see the Home page route to:
 http://localhost:5173/home
 
+to see the uoonsAds homepage: 
+http://localhost:5173/home2
+
 to see the Faq page route to:
 http://localhost:5173/faq
 
