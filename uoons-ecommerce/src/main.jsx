@@ -8,6 +8,9 @@ import App from './App.jsx'
 import './index.css'
 import LoginSignup from './pages/LoginSignup.jsx';
 import Home from './pages/Home.jsx';
+import Faq from './pages/Faq.jsx';
+import Timeline from './pages/Timeline.jsx';
+import TermsAndConditions from './pages/TermsAndConditions.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,18 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/faq",
+    element: <Faq />,
+  },
+  {
+    path: "/timeline",
+    element: <Timeline />,
+  },
+  {
+    path: "/T&c",
+    element: <TermsAndConditions />,
   },
 ]);
 

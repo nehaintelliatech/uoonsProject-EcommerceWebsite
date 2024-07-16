@@ -13,5 +13,9 @@ http://localhost:5173/
 to see the login sign up page route to:
 http://localhost:5173/auth
 
-to see the home page route to:
+to see the Home page route to:
 http://localhost:5173/home
+
+to see the Faq page route to:
+http://localhost:5173/faq
+
