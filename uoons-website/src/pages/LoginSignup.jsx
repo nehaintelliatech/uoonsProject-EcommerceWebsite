@@ -10,6 +10,8 @@ const LoginSignup2 = () => {
   const [otpFieldVisible, setOtpFieldVisible] = useState(false); // State to control the visibility of the OTP field
   const [message, setMessage] = useState(''); // State to store messages
   const [CurrentUserToken, setCurrentUserToken] = useState("")
+  const [otp, setotp] = useState(0)
+  const [otpVerified, setotpVerified] = useState(false)
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm(); // React Hook Form hooks for form handling
 
@@ -35,12 +37,12 @@ const LoginSignup2 = () => {
       const response = await axios.post('https://uoons.com/api/sendOTP ', formData, {
         headers: {
           'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
-          'Content-Length': '<calculated when request is sent>',
-          'Host': '<calculated when request is sent>',
-          'User-Agent': 'PostmanRuntime/7.40.0',
+          // 'Content-Length': '<calculated when request is sent>',
+          // 'Host': '<calculated when request is sent>',
+          // 'User-Agent': 'PostmanRuntime/7.40.0',
           'Accept': '*/*',
-          'Accept-Encoding': 'gzip, deflate, br',
-          'Connection': 'keep-alive',
+          // 'Accept-Encoding': 'gzip, deflate, br',
+          // 'Connection': 'keep-alive',
           'Channel-Code': 'ANDROID',
         },
       });
@@ -74,12 +76,12 @@ const LoginSignup2 = () => {
       const response = await axios.post('https://uoons.com/api/otpVerification', formData, {
         headers: {
           'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
-          'Content-Length': '<calculated when request is sent>',
-          'Host': '<calculated when request is sent>',
-          'User-Agent': 'PostmanRuntime/7.40.0',
+          // 'Content-Length': '<calculated when request is sent>',
+          // 'Host': '<calculated when request is sent>',
+          // 'User-Agent': 'PostmanRuntime/7.40.0',
           'Accept': '*/*',
-          'Accept-Encoding': 'gzip, deflate, br',
-          'Connection': 'keep-alive',
+          // 'Accept-Encoding': 'gzip, deflate, br',
+          // 'Connection': 'keep-alive',
           'Channel-Code': 'ANDROID',
           'Auth': CurrentUserToken
         },
@@ -91,6 +93,7 @@ const LoginSignup2 = () => {
       if (response.data.status === 'success') {
         setOtpFieldVisible(true); // Show the OTP field
         setMessage('OTP Verified Succesfully');
+        otpVerified(true)
         // setCurrentUserToken(response.data.Data.token)
       } else {
         setMessage('Failed to verify OTP. Please try again.');
@@ -103,13 +106,21 @@ const LoginSignup2 = () => {
 
   // Placeholder function for registration handling
   const handleRegister = (data) => {
-    handleGenerateOtp(data); // Call the OTP generation function
+    if(!otpFieldVisible){
+      handleGenerateOtp(data)
+    }else{
+      handleVerifyOtp(data)
+    }
   };
 
   // Placeholder function for login handling
   const handleLogin = (data) => {
     // console.log('Login Data:', data);
-    handleGenerateOtp(data)
+    if(!otpFieldVisible){
+      handleGenerateOtp(data)
+    }else{
+      handleVerifyOtp(data)
+    }
   };
 
   return (
@@ -182,6 +193,7 @@ const LoginSignup2 = () => {
                   id="otp"
                   type="text"
                   placeholder="Enter the OTP"
+
                   {...register('otp', { required: 'OTP is required' })}
                 />
                 {errors.otp && <p className="text-red-500 text-xs italic mt-1">{errors.otp.message}</p>}
@@ -278,6 +290,9 @@ const LoginSignup2 = () => {
             </>
           )}
           {message && <p className="text-red-500 text-xs italic mt-1">{message}</p>}
+
+
+          
         </form>
       )}
     </div>
