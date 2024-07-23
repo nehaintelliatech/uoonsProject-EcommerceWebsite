@@ -1,30 +1,26 @@
 # uoonsProject-EcommerceWebsite
 
-to run the project:
+## Getting Started
 
-in the current directory run:
-npm i
-then:
-npm run dev
+To run the project, follow these steps:
 
-by default the project will run at:
-http://localhost:5173/
+1. Install the necessary dependencies:
+    ```bash
+    npm i
+    ```
 
-to see the login sign up page route to:
-http://localhost:5173/auth
+2. Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-to see the Home page route to:
-http://localhost:5173/home
+By default, the project will run at [http://localhost:5173/](http://localhost:5173/).
 
-to see the uoonsAds homepage: 
-http://localhost:5173/home2
+## Available Routes
 
-to see the Faq page route to:
-http://localhost:5173/faq
-
-to see the Contactus page route to:
-http://localhost:5173/ContactUs
-
-to see the Wishlist page route to:
-http://localhost:5173/Wishlist
-
+- **Login/Signup Page:** [http://localhost:5173/auth](http://localhost:5173/auth)
+- **Home Page:** [http://localhost:5173/home](http://localhost:5173/home)
+- **uoonsAds Homepage:** [http://localhost:5173/home2](http://localhost:5173/home2)
+- **FAQ Page:** [http://localhost:5173/faq](http://localhost:5173/faq)
+- **Contact Us Page:** [http://localhost:5173/ContactUs](http://localhost:5173/ContactUs)
+- **Wishlist Page:** [http://localhost:5173/Wishlist](http://localhost:5173/Wishlist)
