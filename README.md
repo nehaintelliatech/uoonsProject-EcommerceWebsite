@@ -41,7 +41,7 @@ By default, the project will run at [http://localhost:5173/](http://localhost:51
 - **AddToCart Page:** [http://localhost:5173/AddToCart](http://localhost:5173/AddToCart)
 
 - **ProductDescription Page:** [http://localhost:5173/ProductDescription](http://localhost:5173/ProductDescription)
-> **Note:** The Product Description page is currently under development. We aim to complete it by today, 23/07/2024, by 4 PM.
+> **Note:** The Product Description page is currently under development. We aim to complete it by today, 23/07/2024, by 6 PM.
 
 
 
