@@ -18,9 +18,27 @@ By default, the project will run at [http://localhost:5173/](http://localhost:51
 
 ## Available Routes
 
-- **Login/Signup Page:** [http://localhost:5173/auth](http://localhost:5173/auth)
 - **Home Page:** [http://localhost:5173/home](http://localhost:5173/home)
-- **uoonsAds Homepage:** [http://localhost:5173/home2](http://localhost:5173/home2)
-- **FAQ Page:** [http://localhost:5173/faq](http://localhost:5173/faq)
-- **Contact Us Page:** [http://localhost:5173/ContactUs](http://localhost:5173/ContactUs)
-- **Wishlist Page:** [http://localhost:5173/Wishlist](http://localhost:5173/Wishlist)
+
+- **Home Page Ads:** [http://localhost:5173/homeAds](http://localhost:5173/homeAds)
+
+- **Login/Signup Page:** [http://localhost:5173/auth](http://localhost:5173/auth)
+
+- **ProductList Page:** [http://localhost:5173/ProductList](http://localhost:5173/ProductList)
+
+- **Faq Page:** [http://localhost:5173/Faq](http://localhost:5173/Faq)
+
+- **TermsAndConditions Page:** [http://localhost:5173/T&c](http://localhost:5173/T&c)
+
+- **timeline Page:** [http://localhost:5173/timeline](http://localhost:5173/timeline)
+
+- **Wishlist Page:** [http://localhost:5173/wishlist](http://localhost:5173/wishlist)
+
+- **ContactUs Page:** [http://localhost:5173/ContactUs](http://localhost:5173/ContactUs)
+
+- **AddToCart Page:** [http://localhost:5173/AddToCart](http://localhost:5173/AddToCart)
+
+- **ProductDescription Page:** [http://localhost:5173/ProductDescription](http://localhost:5173/ProductDescription)
+
+
+
