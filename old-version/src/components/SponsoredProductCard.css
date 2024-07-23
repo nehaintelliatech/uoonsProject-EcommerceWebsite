@@ -1,0 +1,16 @@
+.SponsoredCard {
+    position: relative;
+  }
+  
+  .SponsoredCard:hover .Like-button {
+    top: 11px;
+  }
+  
+  .SponsoredCard:hover .buy-now {
+    bottom: 7px;
+  }
+  
+  .SponsoredCard:hover .shrinkIt {
+    height: 20px;
+  }
+  
