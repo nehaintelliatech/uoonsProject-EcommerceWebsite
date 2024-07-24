@@ -1,10 +1,14 @@
-import React from "react";
+import React from 'react'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Logo from "../assets/xlLogoUoons.png";
 import { BiSearchAlt } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
-
 
 
 const DropdownLinks = [
@@ -26,6 +30,47 @@ const DropdownLinks = [
 ];
 
 const Navbar = () => {
+  const [categoriesData, setCategoriesData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCategoriesData = async () => {
+      try {
+        const response = await axios.get('/api/getAllCategories?offset=0', {
+          headers: {
+            'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
+            'Accept': '*/*',
+            'channel-code': 'ANDROID'
+          }
+        });
+
+        console.log('API Response:', response.data); // Log the response data
+
+        const categoriesArray = response.data.Data.categories;
+
+        console.log('Categories Array:', categoriesArray); // Log the categories array
+
+        setCategoriesData(categoriesArray);
+        setLoading(false);
+      } catch (err) {
+        console.error('Fetch Error:', err);
+        setError(err);
+        setLoading(false);
+      }
+    };
+
+    fetchCategoriesData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div className="shadow-md bg-white duration-200 relative z-50">
       {/* upper Navbar */}
@@ -113,297 +158,32 @@ const Navbar = () => {
 
 
           {/* Audio-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Audio
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-          {/* Gamming-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Gamming
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-          {/* Refurbish-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Refurbish
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-          {/* Periferals-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Periferals
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-          {/* Mobile-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Mobile
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-          {/* Appliance-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Appliance
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-          {/* Smart Home-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Smart Home
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-          {/* Laptop & Desktop-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Laptop & Desktop
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-          {/* Smart Gadget-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Smart Gadget
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-
-
-          {/* Personal & Healthcare-Dropdown and Links */}
-          <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
-              Personal & Healthcare
-              <span>
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-              </span>
-            </a>
-            <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <button className=" cursor-pointer text-blue-700 py-1 ml-auto">
-              View All
-              </button>
-            </div>
-          </li>
-
-        
-
-
           
-          
+          {Array.isArray(categoriesData) && categoriesData.length > 0 ? (
+          categoriesData.map((category, index) => (
+            <li className="group relative cursor-pointer">
+              <a href="#" className="flex items-center gap-[2px] py-2 hover:text-orange-600">
+              {category.category}
+              <span>
+                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
+              </span>
+            </a>
+              {Array.isArray(category.sub_categories) && category.sub_categories.length > 0 && (
+                <div className="absolute z-[9999] border hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
+                <ul>
+                  {category.sub_categories.map((sub, subIndex) => (
+                    <li key={subIndex}>{sub.category}</li>
+                  ))}
+                </ul>
+                </div>
+              )}
+            </li>
+          ))
+        ) : (
+          <li>No categories available</li>
+        )}
 
-
-
-          
-
-
-          
+     
         </ul>
       </div>
     </div>
