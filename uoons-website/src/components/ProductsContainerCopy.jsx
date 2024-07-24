@@ -61,9 +61,7 @@ const ProductsData = [
 
 const ProductsContainer = (props) => {
   return (
-    <div className="mt-14 mb-12 relative pt-5">
-      <div class="h-full w-full absolute z-[-1000px] bg-gradient-to-t from-green-300 via-transparent to-orange-300">
-      </div>
+    <div className="mt-14 mb-12">
       <div className="container">
         {/* Header section */}
         <div className="text-center mb-10 max-w-[600px] mx-auto">
@@ -86,7 +84,7 @@ const ProductsContainer = (props) => {
                 data-aos="fade-up"
                 data-aos-delay={data.aosDelay}
                 key={data.id}
-                className="border p-4 rounded-lg shadow-lg w-[200px] space-y-2 bg-white hover:shadow-2xl"
+                className="border p-4 rounded-lg shadow-lg w-[200px] space-y-2 hover:shadow-2xl"
               >
                 <img
                   src={data.img}
@@ -112,7 +110,7 @@ const ProductsContainer = (props) => {
           </div>
           {/* view all button */}
           <div className="flex justify-center">
-            <button className="text-center mt-10 cursor-pointer bg-orange-500 text-white py-1 px-5 rounded-md z-50">
+            <button className="text-center mt-10 cursor-pointer bg-orange-500 text-white py-1 px-5 rounded-md">
               View All
             </button>
           </div>

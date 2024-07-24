@@ -1,4 +1,5 @@
 import React from "react";
+import { CgLogIn } from "react-icons/cg";
 import { FaStar } from "react-icons/fa6";
 
 const ProductsData = [
@@ -60,7 +61,9 @@ const ProductsData = [
 ];
 
 const ProductsContainer = (props) => {
+ let dataP = props.data;
   return (
+    
     <div className="mt-14 mb-12">
       <div className="container">
         {/* Header section */}
@@ -77,33 +80,36 @@ const ProductsContainer = (props) => {
         </div>
         {/* Body section */}
         <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-5">
+          <div className="grid grid-cols-1 overflow-x-auto whitespace-nowrap sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-5">
             {/* card section */}
-            {ProductsData.map((data) => (
+            {dataP.map((data) => (
               <div
                 data-aos="fade-up"
                 data-aos-delay={data.aosDelay}
-                key={data.id}
+                key={data.pid}
                 className="border p-4 rounded-lg shadow-lg w-[200px] space-y-2 hover:shadow-2xl"
               >
                 <img
-                  src={data.img}
-                  alt={data.title}
+                  src={"https://uoons.com/"+data.product_images}
+                  alt="image"
                   className="h-[120px] w-full object-contain rounded-md"
                 />
                 <div>
-                  <h3 className="font-semibold text-lg h-15 overflow-hidden">{data.title}</h3>
+                  <h3 className="font-semibold text-lg h-20 overflow-hidden">{data.product_name}</h3>
                   <div className="flex items-center gap-1 text-yellow-500">
                     <FaStar />
-                    <span>{data.rating}</span>
-                    <span className="text-gray-500">({data.reviews} Reviews)</span>
+                    {/* rating */}
+                    <span>4</span>
+                    {/* <span className="text-gray-500">({data.reviews} Reviews)</span> */}
+                    <span className="text-gray-500">(200 Reviews)</span>
+
                   </div>
                   <div className="flex items-center gap-1">
-                    <p className="text-lg font-bold text-primary">{data.offerPrice}</p>
-                    <p className="line-through text-gray-500">{data.price}</p>
+                    <p className="text-lg font-bold text-primary">₹{data.product_sale_price}</p>
+                    <p className="line-through text-gray-500">₹{data.product_price}</p>
                   </div>
                   
-                  <p className="text-green-600">{data.discountPercentage}</p>
+                  <p className="text-green-600">{data.discount}% off</p>
                 </div>
               </div>
             ))}
