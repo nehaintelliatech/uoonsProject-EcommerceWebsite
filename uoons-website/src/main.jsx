@@ -22,7 +22,7 @@ import Test from './pages/Test.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Homepage />,
   },
   {
     path: "/home",
